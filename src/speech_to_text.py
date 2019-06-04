@@ -1,14 +1,6 @@
 import speech_recognition as sr
-import pocketsphinx as ps
-import pyaudio as pa
 import json
-import wave
-import numpy as np
-import time
-from scipy.io import wavfile
-import wavio
-import soundfile as sf
-import io
+#import time
 import datetime as dt
 
 def main(octet_stream):
@@ -20,15 +12,12 @@ def main(octet_stream):
     new_file = open(my_audio_file_name, 'wb')
     new_file.write(byte_array)
     new_file.close()
-    time.sleep(1)
-    #data, samplerate = sf.read(io.BytesIO(byte_array))
-    #print(samplerate)
     new_file = sr.AudioFile(my_audio_file_name)
     with new_file as src:#my_audio_file_name) as src:
         audio = rec.record(src)
         json_text = rec.recognize_google(audio)
-        print(json_text)
         return json_text
+    return None
     # sentence = rec.recognize_google(aud)
     # sentence_dict = {'sentence': sentence}
     # print(json.dumps(sentence_dict))
