@@ -9,9 +9,9 @@ def speech_to_text():
     print(request.files)
     wav_file = request.files['sentence-audio']
     sentence_text = stt(wav_file)
-    sentence_text = {"text": sentence_text}
+    sentence_text = {"output_text": sentence_text}
     print(sentence_text)
     return jsonify(sentence_text)
 
-
-app.run(port=4444)
+if(__name__ == "__main__"):
+    app.run(port=4444)
