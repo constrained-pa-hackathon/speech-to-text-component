@@ -5,9 +5,12 @@ app = Flask(__name__)
 
 @app.route("/speech_to_text", methods=["POST"])
 def speech_to_text():
-    wav_file = request.files['sentence_audio']
+    print(request.headers)
+    print(request.files)
+    wav_file = request.files['sentence-audio']
     sentence_text = stt(wav_file)
     sentence_text = {"text": sentence_text}
+    print(sentence_text)
     return jsonify(sentence_text)
 
 
