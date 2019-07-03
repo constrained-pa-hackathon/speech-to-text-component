@@ -11,7 +11,9 @@ def speech_to_text():
     sentence_text = stt(wav_file)
     sentence_text = {"output_text": sentence_text}
     print(sentence_text)
-    return jsonify(sentence_text)
+    response = jsonify(sentence_text)
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 if(__name__ == "__main__"):
     app.run(port=4444)
