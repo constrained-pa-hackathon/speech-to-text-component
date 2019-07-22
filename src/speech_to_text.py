@@ -15,7 +15,11 @@ def main(octet_stream):
     new_file = sr.AudioFile(my_audio_file_name)
     with new_file as src:#my_audio_file_name) as src:
         audio = rec.record(src)
-        json_text = rec.recognize_google(audio)
+        json_text = " "
+        try:
+            json_text = rec.recognize_google(audio, language = 'en-US')
+        except:
+            json_text = " " 
         return json_text
     return None
     # sentence = rec.recognize_google(aud)
